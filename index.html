@@ -15,10 +15,28 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="./assets/styles.css" />
     <title>Game to Fame</title>
   </head>
   <body>
-    <script src="/assets/index.js"></script>
+    <h1 class="main-card"></h1>
+    <div class="video-div"></div>
+    <video
+      class="vid"
+      playsinline
+      loop
+      muted
+      height="400px"
+      width="400px"
+      poster="https://media.rawg.io/media/movies/d8a/d8a61a3a12e52114afdbc28f2c813f5c.jpg"
+    >
+      <source
+        src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <script src="./assets/index.js"></script>
   </body>
 </html>
