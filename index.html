@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,22 +31,33 @@
     <title>Game to Fame</title>
   </head>
   <body>
-    <h1 class="main-card"></h1>
-    <div class="video-div"></div>
-    <video
-      class="vid"
-      playsinline
-      loop
-      muted
-      height="400px"
-      width="400px"
-      poster="https://media.rawg.io/media/movies/d8a/d8a61a3a12e52114afdbc28f2c813f5c.jpg"
-    >
-      <source
-        src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
-        type="video/mp4"
-      />
-    </video>
+    <div class="header-search">
+      <h2 class="page-name">Game Watch</h2>
+      <input class="search-bar" type="text" placeholder="Search for a game" />
+    </div>
+    <div class="card">
+      <h5 class="card-title">Card title</h5>
+
+      <video
+        class="vid"
+        playsinline
+        loop
+        height="400px"
+        width="400px"
+        <!--
+        poster="https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
+        --
+      >
+        >
+        <source
+          src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <h6 class="card-subtitle mb-2"></h6>
+
+      <div class="card-body"></div>
+    </div>
     <script src="./assets/index.js"></script>
   </body>
 </html>
