@@ -49,3 +49,9 @@ body {
   color: rgb(202, 195, 195);
   margin-right: 10px;
 }
+
+.container-fluid {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
