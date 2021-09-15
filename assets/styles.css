@@ -25,8 +25,12 @@ body {
   border-radius: 50px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 .card {
-  width: fit-content;
   border: solid 1px #4b6587;
   border-radius: 10px;
   margin-top: 2%;
@@ -41,17 +45,12 @@ body {
   color: rgb(202, 195, 195);
 }
 
-.card-subtitle {
-  color: #eb7430;
-}
-
 .page-name {
   color: rgb(202, 195, 195);
   margin-right: 10px;
 }
 
-.container-fluid {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+.image-size {
+  height: 200px;
+  width: 300px;
 }
