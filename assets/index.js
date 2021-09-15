@@ -4,9 +4,9 @@ $(document).ready(function () {
 
 
     $('.search-bar').on('keydown', function (event) {
-        let gameSearch = $('.search-bar').val();
-        console.log('search', gameSearch)
-        console.log(event.key)
+        let gameSearch = $('.search-bar').val().trim();
+        // console.log('search', gameSearch)
+        // console.log(event.key)
         const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=' + gameSearch + '&page=1'
         $.ajax({
             url: queryURL,
@@ -24,23 +24,19 @@ $(document).ready(function () {
                     const imgEl = $('<img>')
                     imgEl.attr('src', results[i].background_image)
                     imgEl.attr('class', 'image-size')
-                    const platforms = results[i].parent_platforms
-                    console.log('platforms', platforms)
-                    for (let i = 0; i < platforms.length; i++) {
-                        const platFormsArray = platforms[i]
-                        const platformDiv = $('<h6>').text(results[i], platFormsArray[i])
-                        div.append(h5El)
-                        div.append(imgEl)
-                        imgEl.append(platformDiv)
-                        $('.container').prepend(div)
-                    }
+                    div.append(h5El)
+                    div.append(imgEl)
+                    $('.container').prepend(div)
 
                 }
+
+
+
             }
-
         })
-
     })
+
+
 
 
 
