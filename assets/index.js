@@ -1,6 +1,6 @@
-
 var key = '15c214371ccd435bb19af0fe3e07b094'
 $(document).ready(function () {
+
 
 
     $('.search-bar').on('keydown', function (event) {
@@ -14,9 +14,11 @@ $(document).ready(function () {
         }).then(function (response) {
             const results = response.results
             if (event.key === 'Enter') {
+                clear()
                 console.log('searchbar:', response)
                 console.log(results)
                 for (let i = 0; i < results.length; i++) {
+                    console.log(results[i].slug)
                     const div = $('<div>')
                     div.attr('class', 'card')
                     const h5El = $('<h5>').text(results[i].name)
@@ -27,14 +29,40 @@ $(document).ready(function () {
                     div.append(h5El)
                     div.append(imgEl)
                     $('.container').prepend(div)
+                    getTrailer(results[i].slug)
+                    getDescription(results[i].slug)
 
                 }
-
-
-
             }
+
         })
     })
+
+    function clear() {
+        $('.container').empty()
+    }
+
+    function getTrailer(slug) {
+        console.log('inside trailer', slug)
+        const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log('trailer', response)
+        });
+    }
+
+    function getDescription(slug) {
+        console.log('inside description', slug)
+        const queryURL = `https://api.rawg.io/api/games/${slug}?key=` + key + `&search_exact`
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+        }).then(function (response) {
+            console.log('description', response)
+        })
+    }
 
 
 
@@ -53,40 +81,5 @@ $(document).ready(function () {
     // })
 
 
-    // function getTrailer() {
-    //     const queryURL = 'https://api.rawg.io/api/games/' + "grand-theft-auto-v" + '/movies?key=' + key;
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET",
-    //     }).then(function (response) {
-    //         console.log('trailer', response)
-    //         $('.card-title').text(response.results[0].name)
-
-    //     });
-    // }
-
-    // function gameInfo() {
-    //     const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=grand-theft-auto-v&search_exact'
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: 'GET',
-    //     }).then(function (data) {
-    //         console.log('gameinfo', data)
-    //         $('.card-subtitle').text('Rating ' + data.results[0].rating + " 🎯")
-    //     })
-    // }
-
-    // function getDescription() {
-    //     const queryURL = 'https://api.rawg.io/api/games/' + 3498 + '?key=' + key + '&search_exact'
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: 'GET',
-    //     }).then(function (response) {
-    //         console.log('description', response)
-    //     })
-    // }
-    // getTrailer()
-    // gameInfo()
-    // getDescription()
 })
 
