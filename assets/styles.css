@@ -1,5 +1,6 @@
 body {
   background-color: #000000;
+  margin-bottom: 50px;
 }
 .page-name {
   color: rgb(202, 195, 195);
@@ -53,4 +54,14 @@ body {
 .image-size {
   height: 200px;
   width: 300px;
+}
+
+.footer {
+  background-color: #2e2928;
+  color: rgb(202, 195, 195);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
