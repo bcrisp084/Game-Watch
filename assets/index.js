@@ -1,13 +1,11 @@
 var key = '15c214371ccd435bb19af0fe3e07b094'
 $(document).ready(function () {
 
-
-
     $('.search-bar').on('keydown', function (event) {
         let gameSearch = $('.search-bar').val().trim();
         // console.log('search', gameSearch)
         // console.log(event.key)
-        const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=' + gameSearch + '&page=1'
+        const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=' + gameSearch + '&page=1&page_size=60'
         $.ajax({
             url: queryURL,
             method: 'GET'
@@ -26,10 +24,13 @@ $(document).ready(function () {
                     const imgEl = $('<img>')
                     imgEl.attr('src', results[i].background_image)
                     imgEl.attr('class', 'image-size')
+                    const h6El = $('<h6>').text(`Release Date: ${results[i].released}`)
+                    h6El.attr('class', 'release-year')
                     div.append(h5El)
                     div.append(imgEl)
+                    div.append(h6El)
                     $('.container').prepend(div)
-                    getTrailer(results[i].slug)
+                    // getTrailer(results[i].slug)
                     getDescription(results[i].slug)
 
                 }
@@ -42,16 +43,16 @@ $(document).ready(function () {
         $('.container').empty()
     }
 
-    function getTrailer(slug) {
-        console.log('inside trailer', slug)
-        const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-        }).then(function (response) {
-            console.log('trailer', response)
-        });
-    }
+    // function getTrailer(slug) {
+    //     console.log('inside trailer', slug)
+    //     const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET",
+    //     }).then(function (response) {
+    //         console.log('trailer', response)
+    //     });
+    // }
 
     function getDescription(slug) {
         console.log('inside description', slug)
@@ -61,6 +62,8 @@ $(document).ready(function () {
             method: 'GET',
         }).then(function (response) {
             console.log('description', response)
+            // const h6El = $('<h6>').text(response.released)
+            // $('.card').append(h6El)
         })
     }
 

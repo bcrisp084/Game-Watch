@@ -36,15 +36,19 @@ body {
   flex-wrap: wrap;
 }
 .card {
+  overflow: hidden;
   align-items: center;
   border: solid 1px #4b6587;
   border-radius: 10px;
   margin-top: 2%;
   background-color: rgb(14, 13, 13);
-  box-shadow: 5px 4px 2px#4b6587;
+  box-shadow: 3px 3px 2px#4b6587;
 }
 
 .card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: "Fjalla One", sans-serif;
   text-align: center;
   margin-top: 5px;
@@ -54,6 +58,10 @@ body {
 .image-size {
   height: 200px;
   width: 300px;
+}
+
+.release-year {
+  color: rgb(202, 195, 195);
 }
 
 .footer {
