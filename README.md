@@ -8,4 +8,4 @@ An application that uses RAWG's api to return various information about a collec
 
 ## Snippet
 
-![image](https://user-images.githubusercontent.com/73912705/133551587-a5214654-04aa-4805-b4ea-e6006d2d7e9a.png)
+![image](https://user-images.githubusercontent.com/73912705/133841525-1d380529-1dca-46d9-895e-cd09e3cf7a5d.png)
