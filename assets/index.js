@@ -29,7 +29,7 @@ $(document).ready(function () {
                     div.append(h5El)
                     div.append(imgEl)
                     div.append(h6El)
-                    $('.container').prepend(div)
+                    $('.container').append(div)
                     // getTrailer(results[i].slug)
                     // getDescription(results[i].slug)
 
