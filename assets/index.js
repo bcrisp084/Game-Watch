@@ -31,9 +31,10 @@ $(document).ready(function () {
                     div.append(h6El)
                     $('.container').prepend(div)
                     // getTrailer(results[i].slug)
-                    getDescription(results[i].slug)
+                    // getDescription(results[i].slug)
 
                 }
+                $('.search-bar').val('')
             }
 
         })
@@ -42,6 +43,28 @@ $(document).ready(function () {
     function clear() {
         $('.container').empty()
     }
+
+    function getGenres() {
+        console.log('inside Genre')
+        const queryURL = `https://api.rawg.io/api/genres?key=` + key
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+        }).then(function (response) {
+            console.log('genres', response)
+            const genreResult = response.results
+            for (let i = 0; i < genreResult.length; i++) {
+                const liEl = $('<li><a>').text(genreResult[i].name)
+                liEl.attr('class', 'dropdown-item')
+                $('#genres').append(liEl)
+            }
+            $('.dropdown-item').on('click', function (event) {
+                console.log(event)
+
+            })
+        })
+    }
+    getGenres()
 
     // function getTrailer(slug) {
     //     console.log('inside trailer', slug)
@@ -54,37 +77,18 @@ $(document).ready(function () {
     //     });
     // }
 
-    function getDescription(slug) {
-        console.log('inside description', slug)
-        const queryURL = `https://api.rawg.io/api/games/${slug}?key=` + key + `&search_exact`
-        $.ajax({
-            url: queryURL,
-            method: 'GET',
-        }).then(function (response) {
-            console.log('description', response)
-            // const h6El = $('<h6>').text(response.released)
-            // $('.card').append(h6El)
-        })
-    }
-
-    function getGenres() {
-        console.log('inside Genre')
-        const queryURL = `https://api.rawg.io/api/genres?key=` + key + `&page_size=40`
-        $.ajax({
-            url: queryURL,
-            method: 'GET',
-        }).then(function (response) {
-            console.log('genres', response)
-
-        })
-    }
-    getGenres()
-
-
-
-
-
-
+    // function getDescription(slug) {
+    //     console.log('inside description', slug)
+    //     const queryURL = `https://api.rawg.io/api/games/${slug}?key=` + key + `&search_exact`
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: 'GET',
+    //     }).then(function (response) {
+    //         console.log('description', response)
+    //         // const h6El = $('<h6>').text(response.released)
+    //         // $('.card').append(h6El)
+    //     })
+    // }
 
 
     // $('.vid').mouseover(function () {
