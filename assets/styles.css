@@ -36,7 +36,7 @@ body {
   flex-wrap: wrap;
 }
 .card {
-  overflow: hidden;
+  width: 310px;
   align-items: center;
   border: solid 1px #4b6587;
   border-radius: 10px;
@@ -46,9 +46,6 @@ body {
 }
 
 .card-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   font-family: "Anton", sans-serif;
   text-align: center;
   margin-top: 5px;
