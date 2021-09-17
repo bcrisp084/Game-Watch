@@ -5,7 +5,7 @@ $(document).ready(function () {
         let gameSearch = $('.search-bar').val().trim();
         // console.log('search', gameSearch)
         // console.log(event.key)
-        const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=' + gameSearch + '&page=1&page_size=60'
+        const queryURL = 'https://api.rawg.io/api/games?key=' + key + '&search=' + gameSearch + '&page=1&page_size=80'
         $.ajax({
             url: queryURL,
             method: 'GET'
@@ -66,6 +66,19 @@ $(document).ready(function () {
             // $('.card').append(h6El)
         })
     }
+
+    function getGenres() {
+        console.log('inside Genre')
+        const queryURL = `https://api.rawg.io/api/genres?key=` + key + `&page_size=40`
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+        }).then(function (response) {
+            console.log('genres', response)
+
+        })
+    }
+    getGenres()
 
 
 
