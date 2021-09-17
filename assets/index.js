@@ -30,7 +30,7 @@ $(document).ready(function () {
                     div.append(imgEl)
                     div.append(h6El)
                     $('.container').append(div)
-                    // getTrailer(results[i].slug)
+                    getTrailer(results[i].slug)
                     // getDescription(results[i].slug)
 
                 }
@@ -56,26 +56,40 @@ $(document).ready(function () {
             for (let i = 0; i < genreResult.length; i++) {
                 const liEl = $('<li><a>').text(genreResult[i].name)
                 liEl.attr('class', 'dropdown-item')
+                liEl.attr('data-name', genreResult[i].name)
                 $('#genres').append(liEl)
             }
             $('.dropdown-item').on('click', function (event) {
-                console.log(event)
+                clear()
+                console.log(this)
+                for (let i = 0; i < genreResult.length; i++) {
+                    const element = genreResult[i]
+                    console.log(element)
+                    const newElement = element.games
+                    console.log(newElement)
+                    for (let i = 0; i < newElement.length; i++) {
+                        const divEl = $('<div>').text(newElement[i].name)
+                        $('.container').append(divEl)
+
+                    }
+                }
+
 
             })
         })
     }
     getGenres()
 
-    // function getTrailer(slug) {
-    //     console.log('inside trailer', slug)
-    //     const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET",
-    //     }).then(function (response) {
-    //         console.log('trailer', response)
-    //     });
-    // }
+    function getTrailer(slug) {
+        console.log('inside trailer', slug)
+        const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log('trailer', response)
+        });
+    }
 
     // function getDescription(slug) {
     //     console.log('inside description', slug)
