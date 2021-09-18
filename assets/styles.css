@@ -5,6 +5,7 @@ body {
 .page-name {
   color: rgb(202, 195, 195);
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .header-search {

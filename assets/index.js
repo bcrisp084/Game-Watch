@@ -1,7 +1,8 @@
 var key = '15c214371ccd435bb19af0fe3e07b094'
 let currentIndex = 0
+const pageName = document.querySelector('.page-name')
 $(document).ready(function () {
-
+    getTrending()
     $('.search-bar').on('keydown', function (event) {
         let gameSearch = $('.search-bar').val().trim();
         // console.log('search', gameSearch)
@@ -45,43 +46,39 @@ $(document).ready(function () {
         $('.container').empty()
     }
 
-    function getGenres() {
-        // console.log('inside Genre')
-        const queryURL = `https://api.rawg.io/api/genres?key=` + key
+
+    function getTrending() {
+        const queryURL = `https://api.rawg.io/api/games/lists/main?key=` + key
         $.ajax({
             url: queryURL,
             method: 'GET',
         }).then(function (response) {
-            console.log('genres', response)
-            const genreResult = response.results
-            for (let i = 0; i < genreResult.length; i++) {
-                console.log('here', genreResult[i].games)
-                const liEl = $('<li><a>').text(genreResult[i].name)
-                liEl.attr('class', 'dropdown-item')
-                liEl.attr('data-name', genreResult[i].name)
-                $('#genres').append(liEl)
-                const element = genreResult[i].games
-                console.log(element)
-                for (let i = 0; i < element.length; i++) {
-                    const newElement = element[i];
-                    console.log(newElement)
-                    const divEl = $('<div>').text(newElement.name)
-                    divEl.attr('class', 'card')
-                    const picEl = $('<img>').attr('src', genreResult[i])
-                    $('.container').append(divEl)
-
-                }
+            clear()
+            console.log('description', response)
+            const data = response.results
+            console.log(data)
+            for (let i = 0; i < data.length; i++) {
+                const divEl = $('<div>')
+                divEl.attr('class', 'card')
+                const h4El = $('<h4>').text(data[i].name)
+                h4El.attr('class', 'card-title')
+                const picEl = $('<img>').attr('src', data[i].background_image)
+                picEl.attr('class', 'image-size')
+                const h5El = $('<h5>').text(data[i].released)
+                h5El.attr('class', 'release-year')
+                divEl.append(h4El)
+                divEl.append(picEl)
+                divEl.append(h5El)
+                $('.container').prepend(divEl)
 
             }
-            $('.dropdown-item').on('click', function (event) {
-                clear()
-
-            })
         })
     }
-    getGenres()
+    pageName.addEventListener('click', getTrending)
 
-    // function getTrailer(slug) {
+})
+
+  // function getTrailer(slug) {
     //     console.log('inside trailer', slug)
     //     const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
     //     $.ajax({
@@ -92,21 +89,7 @@ $(document).ready(function () {
     //     });
     // }
 
-    // function getDescription(slug) {
-    //     console.log('inside description', slug)
-    //     const queryURL = `https://api.rawg.io/api/games/${slug}?key=` + key + `&search_exact`
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: 'GET',
-    //     }).then(function (response) {
-    //         console.log('description', response)
-    //         // const h6El = $('<h6>').text(response.released)
-    //         // $('.card').append(h6El)
-    //     })
-    // }
-
-
-    // $('.vid').mouseover(function () {
+        // $('.vid').mouseover(function () {
     //     $(this).get(0).play();
     // }).mouseout(function () {
     //     $(this).get(0).pause()
@@ -115,6 +98,37 @@ $(document).ready(function () {
     //     console.log($(this))
     // })
 
+        // function getGenres() {
+    //     // console.log('inside Genre')
+    //     const queryURL = `https://api.rawg.io/api/genres?key=` + key
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: 'GET',
+    //     }).then(function (response) {
+    //         console.log('genres', response)
+    //         const genreResult = response.results
+    //         // for (let i = 0; i < genreResult.length; i++) {
+    //         //     console.log('here', genreResult[i].games)
+    //         //     const liEl = $('<li><a>').text(genreResult[i].name)
+    //         //     liEl.attr('class', 'dropdown-item')
+    //         //     liEl.attr('data-name', genreResult[i].name)
+    //         //     $('#genres').append(liEl)
+    //         //     const element = genreResult[i].games
+    //         //     console.log(element)
+    //         //     for (let i = 0; i < element.length; i++) {
+    //         //         const newElement = element[i];
+    //         //         console.log(newElement)
+    //         //         const divEl = $('<div>').text(newElement.name)
+    //         //         divEl.attr('class', 'card')
+    //         //         const picEl = $('<img>').attr('src', genreResult[i])
+    //         //         $('.container').append(divEl)
 
-})
+    //         //     }
 
+    //         // }
+    //         $('.dropdown-item').on('click', function (event) {
+    //             clear()
+
+    //         })
+    //     })
+    // }
