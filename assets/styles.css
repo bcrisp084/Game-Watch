@@ -57,6 +57,15 @@ body {
   width: 300px;
 }
 
+img {
+  border-radius: 5%;
+  transition: all 1s ease-out;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
 .release-year {
   color: rgb(202, 195, 195);
 }
