@@ -61,6 +61,7 @@ body {
 img {
   border-radius: 5%;
   transition: all 1s ease-out;
+  margin-bottom: 30px;
 }
 
 img:hover {
@@ -68,7 +69,9 @@ img:hover {
 }
 
 .release-year {
-  color: rgb(202, 195, 195);
+  position: absolute;
+  bottom: 0;
+  color: rgb(238, 142, 52);
 }
 
 .footer {

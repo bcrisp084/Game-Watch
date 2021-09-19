@@ -14,8 +14,11 @@ $(document).ready(function () {
             if (event.key === 'Enter') {
                 clear()
                 const data = response.results
+                console.log('data', data)
                 displayCard(data)
                 $('.search-bar').val('')
+                getTrailer(gameSearch)
+
             }
         })
     })
@@ -53,7 +56,7 @@ $(document).ready(function () {
             h4El.attr('class', 'card-title')
             const picEl = $('<img>').attr('src', info[i].background_image)
             picEl.attr('class', 'image-size')
-            const h5El = $('<h5>').text(info[i].released)
+            const h5El = $('<h5>').text(`Released: ${info[i].released}`)
             h5El.attr('class', 'release-year')
             divEl.append(h4El)
             divEl.append(picEl)
@@ -72,16 +75,16 @@ $(document).ready(function () {
 
 })
 
-  // function getTrailer(slug) {
-    //     console.log('inside trailer', slug)
-    //     const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET",
-    //     }).then(function (response) {
-    //         console.log('trailer', response)
-    //     });
-    // }
+function getTrailer(slug) {
+    console.log('inside trailer', slug)
+    const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log('trailer', response)
+    });
+}
 
         // $('.vid').mouseover(function () {
     //     $(this).get(0).play();
