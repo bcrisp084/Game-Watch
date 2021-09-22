@@ -1,8 +1,5 @@
-var key = '15c214371ccd435bb19af0fe3e07b094'
-let currentIndex = 0
-const pageName = document.querySelector('.page-name')
-const topRatedEl = document.querySelector('#topRated')
 $(document).ready(function () {
+    var key = '15c214371ccd435bb19af0fe3e07b094'
     getTrending()
     $('.search-bar').on('keydown', function (event) {
         let gameSearch = $('.search-bar').val().trim();
@@ -17,7 +14,12 @@ $(document).ready(function () {
                 console.log('data', data)
                 displayCard(data)
                 $('.search-bar').val('')
-                getTrailer(gameSearch)
+                for (let i = 0; i < data.length; i++) {
+                    const element = data[i].id;
+                    console.log('element', element)
+                    getTrailer(element)
+                }
+
 
             }
         })
@@ -32,6 +34,7 @@ $(document).ready(function () {
             clear()
             const data = response.results
             displayCard(data)
+
 
         })
     }
@@ -50,17 +53,11 @@ $(document).ready(function () {
 
     function displayCard(info) {
         for (let i = 0; i < info.length; i++) {
-            const divEl = $('<div>')
-            divEl.attr('class', 'card')
-            const h4El = $('<h4>').text(info[i].name)
-            h4El.attr('class', 'card-title')
-            const picEl = $('<img>').attr('src', info[i].background_image)
-            picEl.attr('class', 'image-size')
-            const h5El = $('<h5>').text(`Released: ${info[i].released}`)
-            h5El.attr('class', 'release-year')
-            divEl.append(h4El)
-            divEl.append(picEl)
-            divEl.append(h5El)
+            const divEl = $('<div>').addClass('card')
+            const h4El = $('<h4>').text(info[i].name).addClass('card-title')
+            const picEl = $('<img>').attr('src', info[i].background_image).addClass('image-size')
+            const h5El = $('<h5>').text(`Release Date: ${info[i].released}`).addClass('release-year')
+            divEl.append(h4El, picEl, h5El)
             $('.container').append(divEl)
         }
     }
@@ -70,14 +67,14 @@ $(document).ready(function () {
     }
 
 
-    pageName.addEventListener('click', getTrending)
-    topRatedEl.addEventListener('click', topRated)
+    $('.page-name').on('click', getTrending)
+    $('#topRated').on('click', topRated)
 
 })
 
-function getTrailer(slug) {
-    console.log('inside trailer', slug)
-    const queryURL = `https://api.rawg.io/api/games/${slug}/movies?key=` + key;
+function getTrailer(id) {
+    console.log('inside trailer', id)
+    const queryURL = `https://api.rawg.io/api/games/${id}/movies?key=` + key;
     $.ajax({
         url: queryURL,
         method: "GET",
