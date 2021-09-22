@@ -83,3 +83,11 @@ img:hover {
   width: 100%;
   text-align: center;
 }
+
+.far {
+  color: rgb(202, 195, 195);
+}
+
+.fas {
+  padding-right: 5px;
+}

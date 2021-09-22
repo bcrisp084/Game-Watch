@@ -1,5 +1,6 @@
+var key = '15c214371ccd435bb19af0fe3e07b094'
+
 $(document).ready(function () {
-    var key = '15c214371ccd435bb19af0fe3e07b094'
     getTrending()
     $('.search-bar').on('keydown', function (event) {
         let gameSearch = $('.search-bar').val().trim();
