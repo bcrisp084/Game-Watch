@@ -17,7 +17,7 @@ $(document).ready(function () {
                 $('.search-bar').val('')
                 for (let i = 0; i < data.length; i++) {
                     const element = data[i].id;
-                    console.log('element', element)
+                    // console.log('element', element)
                     getTrailer(element)
                 }
 
@@ -74,13 +74,14 @@ $(document).ready(function () {
 })
 
 function getTrailer(id) {
-    console.log('inside trailer', id)
-    const queryURL = `https://api.rawg.io/api/games/${id}/movies?key=` + key;
+    // console.log('inside trailer', id)
+    const queryURL = `https://api.rawg.io/api/games/${id}?key=` + key;
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function (response) {
         console.log('trailer', response)
+        console.log(response.description_raw)
     });
 }
 

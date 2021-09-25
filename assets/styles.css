@@ -55,7 +55,7 @@ body {
 
 .image-size {
   height: 200px;
-  width: 300px;
+  width: 295px;
 }
 
 img {
@@ -65,7 +65,7 @@ img {
 }
 
 img:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .release-year {
